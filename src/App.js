@@ -8,6 +8,11 @@ const url = 'https://course-api.com/react-tours-project';
 function App() {
    const [loading, setLoading] = useState(true);
    const [data, setData] = useState([]);
+   const removeTour = (id) => {
+      const newTour = data.filter((item) => item.id !== id);
+      setData(newTour);
+   };
+
    const fetchApi = async () => {
       setLoading(true);
 
@@ -32,9 +37,21 @@ function App() {
          </main>
       );
    }
+   if (data.length === 0) {
+      return (
+         <main>
+            <div className="title">
+               <h2> no tours left</h2>
+               <button className="btn" onClick={fetchApi}>
+                  Refresh
+               </button>
+            </div>
+         </main>
+      );
+   }
    return (
       <main>
-         <Tours data={data} />
+         <Tours data={data} removeTour={removeTour} />
       </main>
    );
 }
