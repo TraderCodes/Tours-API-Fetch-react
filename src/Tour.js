@@ -11,7 +11,7 @@ const [readmore,setReadmore] = useState(false)
                <h4 className="tour-price">${price}</h4>
             </div>
             <p>{readmore ? info:`${info.substring(0,200)}...`}
-            <button onClick={() => setReadmore(!readmore)} >Readmore</button>
+            <button onClick={() => setReadmore(!readmore)} >{readmore?"Show less" : "Read More"}</button>
             <button className="delete-btn">Not interested</button>
             </p>
          </footer>
